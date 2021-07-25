@@ -25,6 +25,7 @@
     "koa-helmet": "^6.1.0",
     "koa-respond": "^2.1.0",
     "koa-router": "^10.0.0",
-    "mongoose": "5.13.3"
+    "mongoose": "5.13.3",
+    "winston": "^3.3.3"
   }
 }
