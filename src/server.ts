@@ -1,13 +1,21 @@
-import Koa from "koa";
-import config from "./datastore/mongo";
-import * as mongoose from '@south-paw/koa-mongoose';
+import Application from "koa";
+import { Server } from "http"
 
-const app = new Koa();
+import * as app from "./app"
 
-app.use(mongoose(config))
+const port = process.env.PORT || 3000
+let apiUsingPort: Server
 
-app.use(ctx => {
-    ctx.body = 'Hello Koa v1';
-});
 
-app.listen(3000);
+app.setupApp(true)
+    .then((api: Application) => {
+        apiUsingPort = api.listen(3000, () => {
+            // TODO: logger pending
+            console.log(`API server started on port ${port}`)
+        })
+    })
+    .catch((err: Error) => {
+        // TODO: logger pending
+        console.log(err.message)
+        process.exit(1)
+    })
