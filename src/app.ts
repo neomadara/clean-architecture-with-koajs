@@ -38,3 +38,17 @@ async function database(shouldSetupDatabase: boolean) {
     }
 }
 
+async function databaseDisconnect() {
+    try {
+        await mongoose.connection.close()
+        await mongoose.disconnect()
+    } catch (e) {
+        // TODO: logger pending
+        throw e
+    }
+}
+
+export async function tearDownApp() {
+    await databaseDisconnect()
+}
+

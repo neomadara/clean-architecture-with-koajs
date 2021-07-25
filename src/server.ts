@@ -19,3 +19,18 @@ app.setupApp(true)
         console.log(err.message)
         process.exit(1)
     })
+
+process.on('SIGTERM', () => {
+    apiUsingPort.close()
+    app.tearDownApp()
+        .then(() => {
+            // TODO: logger pending
+            console.log('Server received SIGTERM. Graceful shutdown successfully')
+            process.exit(0)
+        })
+        .catch((err: Error) => {
+            // TODO: logger pending
+            console.log('Server received SIGTERM. Exit with errors', { errorMessage: err.message})
+            process.exit(1)
+        })
+})
