@@ -1,7 +1,7 @@
 import Application from "koa"
 import mongoose from "mongoose"
 import middlewares from "./middleware/middlewares"
-import router from "./todo/routes"
+import router from "./todo/interfaces/routes"
 
 
 export async function setupApp(shouldSetupDatabase: boolean = false): Promise<Application> {
@@ -22,7 +22,7 @@ async function database(shouldSetupDatabase: boolean) {
     try {
         if (shouldSetupDatabase) {
             mongoose.Promise = global.Promise;
-            await mongoose.connect('mongodb://localhost/my_database', {
+            await mongoose.connect('mongodb://127.0.0.1:27017/todosapp', {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
                 useFindAndModify: false,
