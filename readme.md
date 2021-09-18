@@ -6,7 +6,7 @@ Pending features
 
 1. TypeScript
 2. Entity Structure
-3. Create Todo Endpoint
+3. Todo Endpoints
 4. Testing
 5. Build
 
