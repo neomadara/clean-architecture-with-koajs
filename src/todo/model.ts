@@ -14,4 +14,4 @@ const todoSchema = new Schema <TodoEntity>(
     }
 )
 
-export const Todo = model<TodoEntity, Model<TodoEntity, {}>>("Todo", todoSchema);
+export const TodoModel = model<TodoEntity, Model<TodoEntity, {}>>("Todo", todoSchema);
